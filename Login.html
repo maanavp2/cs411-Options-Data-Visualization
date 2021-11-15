@@ -1,0 +1,107 @@
+<!doctype html>
+<html>
+
+<head>
+  <title>Login</title>
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+  <!-- jQuery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+  <!-- Latest compiled JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head> 
+
+<body id="body" style="background-color: black;" onload="createNav()">
+  <div class="container" >
+    <div class="row">
+      <div class="col-md-2"></div>
+      <div class="col-md-8">
+        <div class="jumbotron text-center">
+          <h2>Welcome to Options Data Visualization!</h2>
+        </div>
+      </div>
+      <div class="col-md-2">
+      </div>
+    </div>
+  
+    <div class="row">
+      <div class="col-lg-3"></div>
+  
+      <div class="col-lg-6">
+        <div class="row">
+            <div class="well well-lg text-center">
+  
+                <div class="row form-group input-md" id = 'login'>
+                  <div class="row">
+                    <div class="col-lg-2"></div>  
+                    
+                    <div class="col-lg-3 text-center">
+                      <label for="usr">Username:</label>
+                    </div>
+                    <div class="col-lg-5">
+                      <input type="text" class="form-control" id="usr" onkeyup="manage(this)">
+                    </div>
+                    <div class="col-lg-2"></div>  
+                  </div>
+  
+                  <div class="row">
+                    <div class="col-lg-2"></div>  
+                    
+                    <div class="col-lg-3 text-center">
+                      <label for="pwd">Password:</label>
+                    </div>
+                    <div class="col-lg-5">
+                      <input type="password" class="form-control" id="pwd" onkeyup="manage(this)">
+                    </div>
+                    <div class="col-lg-2"></div>  
+                  </div>
+                </div>
+  
+              <div class="row">
+                <div class= "col-lg-12">   
+                  <button type="button" class="btn btn-success btn-block" onclick="login()" id="login-btn" disabled>Login</button>
+                </div>
+  
+              </div>
+  
+            </div>
+        </div>
+      </div>
+      <div class="col-lg-3"></div>
+    </div>
+    <div class="row">
+      <div class="col-lg-3"></div>
+      <div class="col-lg-6">
+        <a class="btn btn-primary btn-block" href="signup.html">New User Sign up</a>
+      </div>
+      <div class="col-lg-3"></div>
+      </div>
+    </div>
+  </div>
+  <script src="User.js"></script>
+  <script src="NavBar.js"></script>
+
+
+  <script>
+    function manage(txt) {
+        var bt = document.getElementById('login-btn');
+        var usr = document.getElementById('usr').value;
+        var pwd = document.getElementById('pwd').value;        
+        if (usr.length >= 5 && pwd.length >= 8) {
+            bt.disabled = false;
+        }
+        else {
+            bt.disabled = true;
+        }
+    }
+  </script>
+
+</body>
+
+
+
+
+  
+</html> 

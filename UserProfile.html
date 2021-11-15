@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<head>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+
+<body id="body" onload="createNav(); loadList()" style="background-color:black; color:white">
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="row form-group">
+                    <div class="row col-lg-12 text-left">
+                        <label for="pwd">Change Password:</label>
+                    </div>
+                    <div class="row col-lg-12">
+                        <input type="text" class="form-control" id="newpwd" onkeyup="manage(this)">
+                    </div>
+                    <div class="row col-lg-12">
+                        <button type="button" class="btn btn-info btn-block" onclick="changePassword()" id = "change-btn" disabled>Change</button>
+                    </div>  
+                </div>
+            </div>
+            
+            <div class="col-lg-4 jumbotron text-center" style="background-color:rgb(54, 54, 54); color:white">
+                <h3> Profile: </h3> 
+            </div>
+            <div class="col-lg-3 right"></div>
+
+            <div class="col-lg-1">
+                <button class="btn btn-danger" onclick="deleteUser()">DELETE MY PROFILE</button>
+            </div>
+        </div>
+        
+        <div class = "row contents">
+            <div class="col-lg-1"></div>
+            <div class="col-lg-10">
+                
+                <div class="row container">
+                    <div class="col-sm-3 form-group text-right">  
+                            <label for="ticker">Ticker:</label>
+                    </div>
+                    <div class="col-sm-3"> 
+                        <input type="text" class="form-control" id="ticker" style="width: 50%;" onkeyup="search(this)">
+                    </div>
+                    
+                    <div class="col-sm-3">
+                        <button class="btn btn-success" onclick="addtolist()">Add</button>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-2"></div>
+                    <div class="col-lg-8">
+                        <div class="panel-group" style="color:navy;">
+                            <div class="panel panel-default" id="userList">
+                            </div>
+                        </div>
+                    </div>
+                    
+        
+                    <div class="col-lg-2"></div>
+
+                </div>
+
+
+
+            </div>
+            <div class="col-lg-1"></div>
+        </div>
+        <!-- <div class="row">
+            <div class="panel-group">
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <h4 class="panel-title">
+                      <a data-toggle="collapse" href="#collapse1">Settings</a>
+                    </h4>
+                  </div>
+                  <div id="collapse1" class="panel-collapse collapse">
+                    <div class="panel-body">Panel Body</div>
+                    <div class="panel-footer">Panel Footer</div>
+                  </div>
+                </div>
+              </div>
+        </div> -->
+        
+    </div>
+
+    <script>
+        function manage(txt) {
+            var bt = document.getElementById('change-btn');
+            var pwd = document.getElementById('newpwd').value;        
+            if (pwd.length >= 8) {
+                bt.disabled = false;
+            }
+            else {
+                bt.disabled = true;
+            }
+        }
+    </script>
+
+
+    <script src="UserProfile.js"></script>
+	<script src="NavBar.js"></script>
+
+
+</body>

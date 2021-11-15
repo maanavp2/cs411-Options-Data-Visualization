@@ -1,0 +1,23 @@
+@charset "UTF-8";
+/* CSS Document */
+
+body {
+	background-color: black;
+	color: white;
+}
+
+button {
+	border: none;
+	color: white;
+	padding: 3px 10px;
+	background-color: #4CAF50;
+	border-radius: 2px;
+}
+
+path.domain {
+	stroke: white;
+}
+
+.tick text {
+	fill: white;
+}
