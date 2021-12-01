@@ -50,4 +50,5 @@ function getData() {
 		.attr("fill", "#69b3a2")
 
 	})
+	svg.selectAll("*").remove()
 }	
