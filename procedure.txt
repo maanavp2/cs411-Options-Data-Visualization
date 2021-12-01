@@ -1,0 +1,53 @@
+DELIMITER //
+
+CREATE PROCEDURE OptionAvgCall()
+BEGIN
+DECLARE done int default 0;
+DECLARE curopt VARCHAR(10);
+DECLARE optcur CURSOR FOR SELECT DISTINCT  ticker_symbol FROM Calls;
+DECLARE CONTINUE HANDLER FOR NOT FOUND SET done = 1;
+DROP TABLE IF EXISTS OptAvgCall;
+CREATE TABLE OptAvgCall(
+ticker_symbol VARCHAR(10) PRIMARY KEY,
+avgASKpCALL REAL,
+avgBIDpCALL REAL
+);
+OPEN optcur;
+REPEAT
+FETCH optcur INTO curopt;
+INSERT IGNORE INTO OptAvgCall
+(SELECT ticker_symbol, AVG(ask_price), AVG(bid_price)
+FROM Calls
+WHERE ticker_symbol = curopt);
+UNTIL done
+END REPEAT;
+close optcur;
+END //
+
+CREATE PROCEDURE OptionAvgPut()
+BEGIN
+DECLARE done int default 0;
+DECLARE curopt VARCHAR(10);
+DECLARE optcur CURSOR FOR SELECT DISTINCT  ticker_symbol FROM Puts;
+DECLARE CONTINUE HANDLER FOR NOT FOUND SET done = 1;
+DROP TABLE IF EXISTS OptAvgPut;
+CREATE TABLE OptAvgPut(
+ticker_symbol VARCHAR(10) PRIMARY KEY,
+avgASKpPut REAL,
+avgBIDpPut REAL
+);
+OPEN optcur;
+REPEAT
+FETCH optcur INTO curopt;
+INSERT IGNORE INTO OptAvgPut
+(SELECT ticker_symbol, AVG(ask_price), AVG(bid_price)
+FROM Puts
+WHERE ticker_symbol = curopt);
+UNTIL done
+END REPEAT;
+close optcur;
+END //
+
+DELIMITER ;
+CALL OptionAvgCall();
+CALL OptionAvgPut();

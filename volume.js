@@ -15,7 +15,7 @@ var svg = d3.select("#my_dataviz")
 var form = document.getElementById('frm');
 
 // Parse the Data
-function getVolumeData() {
+function getData() {
 	d3.json("http://18.220.144.204:5000/volume?date="+form['date'].value, function(data) {
     let max = 0;
 		
@@ -48,5 +48,6 @@ function getVolumeData() {
 		.attr("width", x.bandwidth())
 		.attr("height", function(d) { return height - y(d[1]); })
 		.attr("fill", "#69b3a2")
+
 	})
 }	

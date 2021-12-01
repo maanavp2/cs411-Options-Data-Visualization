@@ -4,7 +4,7 @@ var margin = {top: 30, right: 30, bottom: 70, left: 60},
     height = 400 - margin.top - margin.bottom;
 
 // append the svg object to the body of the page
-var svg = d3.select("#dataviz")
+var svg = d3.select("#my_dataviz")
   .append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
@@ -12,10 +12,10 @@ var svg = d3.select("#dataviz")
     .attr("transform",
           "translate(" + margin.left + "," + margin.top + ")");
 
-		  
-		  // Parse the Data
-function getVolatData() {
-	var form = document.getElementById('frm');
+var form = document.getElementById('frm');
+
+// Parse the Data
+function getData() {
 	d3.json("http://18.220.144.204:5000/volatility?date="+form['date'].value, function(data) {
     let max = 0;
 		
